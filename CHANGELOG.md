@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Fixed XAML markup in `UninstallUWPApps` function. Thanks to Gugenot Murm for bugreport.
 
+## Wrapper 2.8.15
+
+Accessibility Scaling UI options are now user editable with JSON
+
 ## 6.0.2 | 7.0.2 — 29.12.2025
 
 * Updated `Install-VCRedist` function to download 2022—2026 version of Visual C++ Redistributable package;
