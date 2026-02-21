@@ -20,10 +20,11 @@ jobs:
           Write-Verbose -Message $env:LatestRelease -Verbose
 
           # Replace variables with script latest versions
-          (Get-Content -Path "chocolatey\sophia.nuspec" -Encoding utf8NoBOM -Raw) -replace ("SophiaScriptVersion", "${{ env.LatestRelease }}") | Set-Content -Path "chocolatey\sophia.nuspec" -Encoding utf8NoBOM -Force
+          (Get-Content -Path "Scripts\Chocolatey\sophia.nuspec" -Encoding utf8NoBOM -Raw) -replace ("SophiaScriptVersion", "${{ env.LatestRelease }}") | Set-Content -Path "Scripts\Chocolatey\sophia.nuspec" -Encoding utf8NoBOM -Force
 
-          choco pack chocolatey\sophia.nuspec --outputdirectory chocolatey
+          choco pack Scripts\Chocolatey\sophia.nuspec --outputdirectory Scripts\Chocolatey
           choco apikey --key ${{ secrets.CHOCOLATEY_SECRET }} --source https://push.chocolatey.org/
-          [xml]$Version = Get-Content -Path chocolatey\sophia.nuspec
+          [xml]$Version = Get-Content -Path Scripts\Chocolatey\sophia.nuspec
           [string]$Version = $Version.package.metadata.version
-          choco push chocolatey\sophia.$Version.nupkg --source https://push.chocolatey.org/ --yes
+          Write-Verbose -Message $Version -Verbose
+          choco push Scripts\Chocolatey\sophia.$Version.nupkg --source https://push.chocolatey.org/ --yes
