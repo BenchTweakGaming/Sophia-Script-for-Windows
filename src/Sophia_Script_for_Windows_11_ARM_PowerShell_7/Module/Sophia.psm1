@@ -7815,6 +7815,10 @@ function WindowsAI
 		Write-Error -Message $Localization.CopilotPCSupport -ErrorAction SilentlyContinue
 	}
 
+	Write-Information -MessageData "" -InformationAction Continue
+	# Extract the localized "Please wait..." string from %SystemRoot%\System32\shell32.dll
+	Write-Verbose -Message ([WinAPI.GetStrings]::GetString(12612)) -Verbose
+
 	switch ($PSCmdlet.ParameterSetName)
 	{
 		"Disable"

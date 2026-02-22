@@ -17,6 +17,7 @@ jobs:
 
       - name: Pack and push to Chocolatey
         run: |
+          # $Latest_Release.Sophia_Script_Windows_11_PowerShell_5_1
           Write-Verbose -Message $env:LatestRelease -Verbose
 
           # Replace variables with script latest versions
@@ -24,7 +25,9 @@ jobs:
 
           choco pack Scripts\Chocolatey\sophia.nuspec --outputdirectory Scripts\Chocolatey
           choco apikey --key ${{ secrets.CHOCOLATEY_SECRET }} --source https://push.chocolatey.org/
+
           [xml]$Version = Get-Content -Path Scripts\Chocolatey\sophia.nuspec
           [string]$Version = $Version.package.metadata.version
           Write-Verbose -Message $Version -Verbose
+
           choco push Scripts\Chocolatey\sophia.$Version.nupkg --source https://push.chocolatey.org/ --yes

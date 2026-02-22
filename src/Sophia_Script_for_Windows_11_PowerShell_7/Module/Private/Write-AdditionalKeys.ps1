@@ -14,7 +14,7 @@
 	.LINK
 	https://github.com/farag2/Sophia-Script-for-Windows
 #>
-function Write-AdditionalKeys
+function Global:Write-AdditionalKeys
 {
 	Param
 	(

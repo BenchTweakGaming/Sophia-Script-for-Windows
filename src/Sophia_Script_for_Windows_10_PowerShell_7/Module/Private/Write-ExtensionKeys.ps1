@@ -14,7 +14,7 @@
 	.LINK
 	https://github.com/farag2/Sophia-Script-for-Windows
 #>
-function Write-ExtensionKeys
+function Global:Write-ExtensionKeys
 {
 	Param
 	(
