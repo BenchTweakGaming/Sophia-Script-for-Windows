@@ -4591,16 +4591,16 @@ function OneDrive
 			Write-Verbose -Message ($Localization.InstallNotification -f "OneDrive") -Verbose
 			Write-Information -MessageData "" -InformationAction Continue
 
-			if (Test-Path -Path $env:SystemRoot\System32\OneDriveSetup.exe)
+			if (Test-Path -Path $env:SystemRoot\SysWOW64\OneDriveSetup.exe)
 			{
 				if ($AllUsers)
 				{
 					# Install OneDrive for all users to %ProgramFiles%
-					& $env:SystemRoot\System32\OneDriveSetup.exe /allusers
+					& $env:SystemRoot\SysWOW64\OneDriveSetup.exe /allusers
 				}
 				else
 				{
-					Start-Process -FilePath $env:SystemRoot\System32\OneDriveSetup.exe
+					Start-Process -FilePath $env:SystemRoot\SysWOW64\OneDriveSetup.exe
 				}
 			}
 			else
