@@ -282,10 +282,10 @@ Thanks to @gtumanyan
 
 ```powershell
 # Download a PowerShell 5.1 version of Sophia Script by default
-choco install sophia --force -y
+choco install sophia --force --yes
 
 # Download a PowerShell 7 version of Sophia Script
-choco install sophia --params "/PS7" --force -y
+choco install sophia --params "/PS7" --force --yes
 ```
 
 * Added `MeetNow` function for `Windows 10 x64 Enterprise LTSC 2021`

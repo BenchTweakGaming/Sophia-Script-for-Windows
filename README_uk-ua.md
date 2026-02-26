@@ -168,18 +168,18 @@ iwr sl.sophia.team -useb | iex
 Завантажте та розпакуйте в папку Завантаження останню версію `Sophia Script for Windows` залежно від вашої версії Windows.
 
 ```powershell
-choco install sophia --force -y
+choco install sophia --version=7.1.4 --force --yes
 ```
 
 Завантажте та розпакуйте в папку Завантаження останню версію `Sophia Script for Windows` для PowerShell 7 залежно від вашої версії Windows.
 
 ```powershell
-choco install sophia --params "/PS7" --force -y
+choco install sophia --version=7.1.4 --params "/PS7" --force --yes
 ```
 
 ```powershell
 # Видалити, а потім видалити вручну завантажену папку
-choco uninstall sophia --force -y
+choco uninstall sophia --force --yes
 ```
 
 ### WinGet
