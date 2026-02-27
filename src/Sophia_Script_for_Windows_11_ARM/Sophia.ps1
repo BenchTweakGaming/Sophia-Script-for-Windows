@@ -881,8 +881,8 @@ DefaultTerminalApp -WindowsTerminal
 # Установить последнюю версию распространяемых пакетов Microsoft Visual C++ 2017–2026 (ARM64). Требуется соединение с интернетом
 Install-VCRedist
 
-# Install the latest .NET Desktop Runtime 8, 9, 10 x64. Internet connection required
-# Установить последнюю версию .NET Desktop Runtime 8, 9, 10 x64. Требуется соединение с интернетом
+# Install the latest .NET Desktop Runtime 8, 9, 10 (ARM64). Internet connection required
+# Установить последнюю версию .NET Desktop Runtime 8, 9, 10 (ARM64). Требуется соединение с интернетом
 Install-DotNetRuntimes -Runtimes NET8, NET9, NET10
 
 # Enable proxying only blocked sites from the unified registry of Roskomnadzor. Applicable for Russia only
@@ -1091,25 +1091,29 @@ SaveZoneInformation -Disable
 # Выключить Windows Sandbox (значение по умолчанию). Применимо только к редакциям Professional, Enterprise и Education
 # WindowsSandbox -Disable
 
-# Enable DNS-over-HTTPS using Cloudflare DNS
-# Установить Cloudflare DNS, используя DNS-over-HTTPS
+# Set up DNS from Cloudflare DNS using DNS-over-HTTPS
+# Установить DNS от Cloudflare, используя DNS-over-HTTPS
 DNSoverHTTPS -Cloudflare
 
-# Enable DNS-over-HTTPS using Google Public DNS
-# Установить Google Public DNS, используя DNS-over-HTTPS
+# Set up DNS from Google Public DNS using DNS-over-HTTPS
+# Установить DNS от Google Public DNS, используя DNS-over-HTTPS
 # DNSoverHTTPS -Google
 
-# Enable DNS-over-HTTPS using Quad9 DNS
-# Установить Google DNS, используя DNS-over-HTTPS
+# Set up DNS from Quad9 DNS using DNS-over-HTTPS
+# Установить DNS от Quad9, используя DNS-over-HTTPS
 # DNSoverHTTPS -Quad9
 
-# Enable DNS-over-HTTPS using Comss.one DNS
-# Установить Google DNS, используя DNS-over-HTTPS
+# Set up DNS from Comss.one DNS using DNS-over-HTTPS
+# Установить DNS от Comss.one, используя DNS-over-HTTPS
 # DNSoverHTTPS -ComssOne
 
-# Enable DNS-over-HTTPS using AdGuard DNS
-# Установить AdGuard DNS, используя DNS-over-HTTPS
+# Set up DNS from AdGuard DNS using DNS-over-HTTPS
+# Установить DNS от AdGuard, используя DNS-over-HTTPS
 # DNSoverHTTPS -AdGuard
+
+# Set up DNS fromOpenDNS DNS using DNS-over-HTTPS
+# Установить DNS от OpenDNS, используя DNS-over-HTTPS
+# DNSoverHTTPS -OpenDNS
 
 # Set default ISP's DNS records (default value)
 # Установить DNS-записи вашего провайдера (значение по умолчанию)

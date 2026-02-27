@@ -4442,7 +4442,7 @@ function WindowsFeatures
 		[void]$Window.Close()
 
 		$SelectedFeatures | ForEach-Object -Process {Write-Verbose -Message $_.DisplayName -Verbose}
-		$SelectedFeatures | Disable-WindowsOptionalFeature -Online -NoRestart
+		$SelectedFeatures | Disable-WindowsOptionalFeature -Online -NoRestart -Verbose
 	}
 
 	function EnableButton
@@ -4454,7 +4454,7 @@ function WindowsFeatures
 		[void]$Window.Close()
 
 		$SelectedFeatures | ForEach-Object -Process {Write-Verbose -Message $_.DisplayName -Verbose}
-		$SelectedFeatures | Enable-WindowsOptionalFeature -Online -All -NoRestart
+		$SelectedFeatures | Enable-WindowsOptionalFeature -Online -All -NoRestart -Verbose
 	}
 
 	function Add-FeatureControl
@@ -9420,7 +9420,7 @@ function WindowsSandbox
 			# Checking whether x86 virtualization is enabled in the firmware
 			if ((Get-CimInstance -ClassName CIM_Processor).VirtualizationFirmwareEnabled)
 			{
-				Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online -NoRestart
+				Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online -NoRestart -Verbose
 			}
 			else
 			{
@@ -9429,7 +9429,7 @@ function WindowsSandbox
 					# Determining whether Hyper-V is enabled
 					if ((Get-CimInstance -ClassName CIM_ComputerSystem).HypervisorPresent)
 					{
-						Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online -NoRestart
+						Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online -NoRestart -Verbose
 					}
 				}
 				catch [System.Exception]
@@ -9445,7 +9445,7 @@ function WindowsSandbox
 			# Checking whether x86 virtualization is enabled in the firmware
 			if ((Get-CimInstance -ClassName CIM_Processor).VirtualizationFirmwareEnabled)
 			{
-				Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart
+				Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart -Verbose
 			}
 			else
 			{
@@ -9454,7 +9454,7 @@ function WindowsSandbox
 					# Determining whether Hyper-V is enabled
 					if ((Get-CimInstance -ClassName CIM_ComputerSystem).HypervisorPresent)
 					{
-						Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart
+						Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart -Verbose
 					}
 				}
 				catch [System.Exception]

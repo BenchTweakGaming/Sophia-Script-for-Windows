@@ -1216,11 +1216,11 @@
     "Arg": {
       "Zero": {
         "Tag": "Disable",
-        "ToolTip": "Turn off pressing the Shift key 5 times to turn Sticky keys."
+        "ToolTip": "Do not allow the shortcut key to Start Sticky Keys when pressing the the Shift key 5 times."
       },
       "One": {
         "Tag": "Enable",
-        "ToolTip": "Turn on pressing the Shift key 5 times to turn Sticky keys (default value)."
+        "ToolTip": "Allow the shortcut key to Start Sticky Keys when pressing the the Shift key 5 times (default value)."
       }
     }
   },
@@ -1396,7 +1396,7 @@
     "Function": "PreventEdgeShortcutCreation",
     "Arg": {
       "Zero": {
-        "Tag": "Channels",
+        "Tag": "Channels Stable, Beta, Dev, Canary",
         "ToolTip": "List Microsoft Edge channels to prevent desktop shortcut creation upon its' update."
       },
       "One": {
@@ -1679,25 +1679,29 @@
     "Arg": {
       "Zero": {
         "Tag": "Cloudflare",
-        "ToolTip": "Enable DNS-over-HTTPS using Cloudflare DNS."
+        "ToolTip": "Set up DNS from Cloudflare using DNS-over-HTTPS."
       },
       "One": {
         "Tag": "Google",
-        "ToolTip": "Enable DNS-over-HTTPS using Google Public DNS."
+        "ToolTip": "Set up DNS from Google Public DNS using DNS-over-HTTPS."
       },
       "Two": {
         "Tag": "Quad9",
-        "ToolTip": "Enable DNS-over-HTTPS using Quad9 DNS."
+        "ToolTip": "Set up DNS from Quad9 using DNS-over-HTTPS."
       },
       "Three": {
         "Tag": "ComssOne",
-        "ToolTip": "Enable DNS-over-HTTPS using Comss.one DNS."
+        "ToolTip": "Set up DNS from ComssOne using DNS-over-HTTPS."
       },
       "Four": {
         "Tag": "AdGuard",
-        "ToolTip": "Enable DNS-over-HTTPS using AdGuard DNS."
+        "ToolTip": "Set up DNS from AdGuard using DNS-over-HTTPS."
       },
       "Five": {
+        "Tag": "OpenDNS",
+        "ToolTip": "Set up DNS from OpenDNS using DNS-over-HTTPS."
+      },
+      "Six": {
         "Tag": "Disable",
         "ToolTip": "Set default ISP's DNS records (default value)."
       }

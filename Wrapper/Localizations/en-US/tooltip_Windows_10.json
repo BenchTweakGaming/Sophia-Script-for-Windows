@@ -911,7 +911,7 @@
     "Arg": {
       "Zero": {
         "Tag": "",
-        "ToolTip": "Install OneDrive all users to %ProgramFiles% depending which installer is triggered. Internet connection required."
+        "ToolTip": "Install OneDrive all users to %ProgramFiles%. Internet connection required."
       }
     }
   },
@@ -1402,7 +1402,7 @@
   {
     "Region": "System",
     "Function": "Install-DotNetRuntimes -Runtimes",
-    "ToolTip": "Install the latest .NET Desktop Runtime 8, 9, 10 x64",
+    "ToolTip": "Install the latest .NET Desktop Runtime 8, 9, 10 x64.",
     "Arg": {
       "Zero": {
         "Tag": "NET8",
@@ -1483,11 +1483,10 @@
   {
     "Region": "UWP apps",
     "Function": "Uninstall-UWPApps -ForAllUsers",
-    "ToolTip": "Uninstall UWP apps using the pop-up dialog box. If the \"For all users\" is checked apps packages will not be installed for new users. The \"ForAllUsers\" argument sets a checkbox to unistall packages for all users.",
     "Arg": {
       "Zero": {
         "Tag": "",
-        "ToolTip": ""
+        "ToolTip": "Uninstall UWP apps using the pop-up dialog box. If the \"For all users\" is checked apps packages will not be installed for new users. The \"ForAllUsers\" argument sets a checkbox to unistall packages for all users."
       }
     }
   },
@@ -1637,7 +1636,7 @@
       },
       "One": {
         "Tag": "Disable",
-        "ToolTip": "Erkennung potenziell unerwünschter Anwendungen deaktivieren und diese blockieren (Standardwert)."
+        "ToolTip": "Disable detection for potentially unwanted applications and block them (default value)."
       }
     }
   },

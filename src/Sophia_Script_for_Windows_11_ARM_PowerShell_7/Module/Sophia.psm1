@@ -4600,7 +4600,7 @@ function WindowsFeatures
 		[void]$Window.Close()
 
 		$SelectedFeatures | ForEach-Object -Process {Write-Verbose -Message $_.DisplayName -Verbose}
-		$SelectedFeatures | Disable-WindowsOptionalFeature -Online -NoRestart
+		$SelectedFeatures | Disable-WindowsOptionalFeature -Online -NoRestart -Verbose
 	}
 
 	function EnableButton
@@ -4612,7 +4612,7 @@ function WindowsFeatures
 		[void]$Window.Close()
 
 		$SelectedFeatures | ForEach-Object -Process {Write-Verbose -Message $_.DisplayName -Verbose}
-		$SelectedFeatures | Enable-WindowsOptionalFeature -Online -All -NoRestart
+		$SelectedFeatures | Enable-WindowsOptionalFeature -Online -All -NoRestart -Verbose
 	}
 
 	function Add-FeatureControl
@@ -7351,8 +7351,8 @@ function Install-VCRedist
 	else
 	{
 		Write-Information -MessageData "" -InformationAction Continue
-		Write-Verbose -Message (($Localization.PackageIsInstalled -f "Microsoft Visual C++ Redistributable Packages 2017-2026 x64"), ($Localization.Skipped -f $MyInvocation.Line.Trim()) -join " ") -Verbose
-		Write-Error -Message (($Localization.PackageIsInstalled -f "Microsoft Visual C++ Redistributable Packages 2017-2026 x64"), ($Localization.Skipped -f $MyInvocation.Line.Trim()) -join " ") -ErrorAction SilentlyContinue
+		Write-Verbose -Message (($Localization.PackageIsInstalled -f "Microsoft Visual C++ Redistributable Packages 2017-2026 ARM64"), ($Localization.Skipped -f $MyInvocation.Line.Trim()) -join " ") -Verbose
+		Write-Error -Message (($Localization.PackageIsInstalled -f "Microsoft Visual C++ Redistributable Packages 2017-2026 ARM64"), ($Localization.Skipped -f $MyInvocation.Line.Trim()) -join " ") -ErrorAction SilentlyContinue
 	}
 }
 
@@ -7433,11 +7433,11 @@ function Install-DotNetRuntimes
 		}
 
 		# Checking whether .NET installed
-		if (Test-Path -Path "$env:ProgramData\Package Cache\*\windowsdesktop-runtime-$LatestNETVersion-win-x64.exe")
+		if (Test-Path -Path "$env:ProgramData\Package Cache\*\windowsdesktop-runtime-$LatestNETVersion-win-arm64.exe")
 		{
 			# Choose the first item if user has more than one package installed
 			# FileVersion has four properties while $LatestNETVersion has only three, unless the [System.Version] accelerator fails
-			$CurrentNETVersion = (Get-Item -Path "$env:ProgramData\Package Cache\*\windowsdesktop-runtime-$LatestNETVersion-win-x64.exe" | Select-Object -First 1).VersionInfo.FileVersion
+			$CurrentNETVersion = (Get-Item -Path "$env:ProgramData\Package Cache\*\windowsdesktop-runtime-$LatestNETVersion-win-arm64.exe" | Select-Object -First 1).VersionInfo.FileVersion
 			$CurrentNETVersion = "{0}.{1}.{2}" -f $CurrentNETVersion.Split(".")
 		}
 		else
@@ -7452,8 +7452,8 @@ function Install-DotNetRuntimes
 			{
 				# Downloading .NET Desktop Runtime
 				$Parameters = @{
-					Uri             = "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/$LatestNETVersion/windowsdesktop-runtime-$LatestNETVersion-win-x64.exe"
-					OutFile         = "$DownloadsFolder\windowsdesktop-runtime-$LatestNETVersion-win-x64.exe"
+					Uri             = "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/$LatestNETVersion/windowsdesktop-runtime-$LatestNETVersion-win-arm64.exe"
+					OutFile         = "$DownloadsFolder\windowsdesktop-runtime-$LatestNETVersion-win-arm64.exe"
 					UseBasicParsing = $true
 					Verbose         = $true
 				}
@@ -7472,7 +7472,7 @@ function Install-DotNetRuntimes
 			Write-Verbose -Message ($Localization.InstallNotification -f ".NET $LatestNETVersion") -Verbose
 			Write-Information -MessageData "" -InformationAction Continue
 
-			Start-Process -FilePath "$DownloadsFolder\windowsdesktop-runtime-$LatestNETVersion-win-x64.exe" -ArgumentList "/install /passive /norestart" -Wait
+			Start-Process -FilePath "$DownloadsFolder\windowsdesktop-runtime-$LatestNETVersion-win-arm64.exe" -ArgumentList "/install /passive /norestart" -Wait
 		}
 		else
 		{
@@ -7485,7 +7485,7 @@ function Install-DotNetRuntimes
 		# https://github.com/PowerShell/PowerShell/issues/21070
 		$Paths = @(
 			"$env:TEMP\Microsoft_Windows_Desktop_Runtime*.log",
-			"$DownloadsFolder\windowsdesktop-runtime-$LatestNETVersion-win-x64.exe"
+			"$DownloadsFolder\windowsdesktop-runtime-$LatestNETVersion-win-arm64.exe"
 		)
 		Get-ChildItem -Path $Paths -Force -ErrorAction Ignore | Remove-Item -Force -ErrorAction Ignore
 	}
@@ -7824,14 +7824,14 @@ function WindowsAI
 		"Disable"
 		{
 			# Disable Recall
-			Disable-WindowsOptionalFeature -Online -FeatureName Recall
+			Disable-WindowsOptionalFeature -Online -FeatureName Recall -NoRestart -Verbose
 			# Remove Copilot application
 			Get-AppxPackage -Name Microsoft.Copilot | Remove-AppxPackage
 		}
 		"Enable"
 		{
 			# Enable Recall
-			Enable-WindowsOptionalFeature -Online -FeatureName Recall
+			Enable-WindowsOptionalFeature -Online -FeatureName Recall -All -NoRestart -Verbose
 			# Open Copilot page in Microsoft Store
 			Start-Process -FilePath "ms-windows-store://pdp/?ProductId=9NHT9RB2F4HD"
 		}
@@ -10452,7 +10452,7 @@ function WindowsSandbox
 			# Checking whether x86 virtualization is enabled in the firmware
 			if ((Get-CimInstance -ClassName CIM_Processor).VirtualizationFirmwareEnabled)
 			{
-				Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online -NoRestart
+				Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online -NoRestart -Verbose
 			}
 			else
 			{
@@ -10461,7 +10461,7 @@ function WindowsSandbox
 					# Determining whether Hyper-V is enabled
 					if ((Get-CimInstance -ClassName CIM_ComputerSystem).HypervisorPresent)
 					{
-						Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online -NoRestart
+						Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online -NoRestart -Verbose
 					}
 				}
 				catch [System.Exception]
@@ -10477,7 +10477,7 @@ function WindowsSandbox
 			# Checking whether x86 virtualization is enabled in the firmware
 			if ((Get-CimInstance -ClassName CIM_Processor).VirtualizationFirmwareEnabled)
 			{
-				Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart
+				Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart -Verbose
 			}
 			else
 			{
@@ -10486,7 +10486,7 @@ function WindowsSandbox
 					# Determining whether Hyper-V is enabled
 					if ((Get-CimInstance -ClassName CIM_ComputerSystem).HypervisorPresent)
 					{
-						Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart
+						Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart -Verbose
 					}
 				}
 				catch [System.Exception]

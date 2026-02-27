@@ -4669,7 +4669,7 @@ function WindowsFeatures
 		[void]$Window.Close()
 
 		$SelectedFeatures | ForEach-Object -Process {Write-Verbose -Message $_.DisplayName -Verbose}
-		$SelectedFeatures | Disable-WindowsOptionalFeature -Online -NoRestart
+		$SelectedFeatures | Disable-WindowsOptionalFeature -Online -NoRestart -Verbose
 	}
 
 	function EnableButton
@@ -4681,7 +4681,7 @@ function WindowsFeatures
 		[void]$Window.Close()
 
 		$SelectedFeatures | ForEach-Object -Process {Write-Verbose -Message $_.DisplayName -Verbose}
-		$SelectedFeatures | Enable-WindowsOptionalFeature -Online -All -NoRestart
+		$SelectedFeatures | Enable-WindowsOptionalFeature -Online -All -NoRestart -Verbose
 	}
 
 	function Add-FeatureControl
@@ -7896,14 +7896,14 @@ function WindowsAI
 		"Disable"
 		{
 			# Disable Recall
-			Disable-WindowsOptionalFeature -Online -FeatureName Recall
+			Disable-WindowsOptionalFeature -Online -FeatureName Recall -NoRestart -Verbose
 			# Remove Copilot application
 			Get-AppxPackage -Name Microsoft.Copilot | Remove-AppxPackage
 		}
 		"Enable"
 		{
 			# Enable Recall
-			Enable-WindowsOptionalFeature -Online -FeatureName Recall
+			Enable-WindowsOptionalFeature -Online -FeatureName Recall -All -NoRestart -Verbose
 			# Open Copilot page in Microsoft Store
 			Start-Process -FilePath "ms-windows-store://pdp/?ProductId=9NHT9RB2F4HD"
 		}
@@ -10511,7 +10511,7 @@ function WindowsSandbox
 			# Checking whether x86 virtualization is enabled in the firmware
 			if ((Get-CimInstance -ClassName CIM_Processor).VirtualizationFirmwareEnabled)
 			{
-				Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online -NoRestart
+				Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online -NoRestart -Verbose
 			}
 			else
 			{
@@ -10520,7 +10520,7 @@ function WindowsSandbox
 					# Determining whether Hyper-V is enabled
 					if ((Get-CimInstance -ClassName CIM_ComputerSystem).HypervisorPresent)
 					{
-						Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online -NoRestart
+						Disable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -Online -NoRestart -Verbose
 					}
 				}
 				catch [System.Exception]
@@ -10536,7 +10536,7 @@ function WindowsSandbox
 			# Checking whether x86 virtualization is enabled in the firmware
 			if ((Get-CimInstance -ClassName CIM_Processor).VirtualizationFirmwareEnabled)
 			{
-				Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart
+				Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart -Verbose
 			}
 			else
 			{
@@ -10545,7 +10545,7 @@ function WindowsSandbox
 					# Determining whether Hyper-V is enabled
 					if ((Get-CimInstance -ClassName CIM_ComputerSystem).HypervisorPresent)
 					{
-						Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart
+						Enable-WindowsOptionalFeature -FeatureName Containers-DisposableClientVM -All -Online -NoRestart -Verbose
 					}
 				}
 				catch [System.Exception]
@@ -10719,6 +10719,13 @@ function DNSoverHTTPS
 			$PrimaryDNS   = "94.140.14.14"
 			$SecondaryDNS = "94.140.14.15"
 			$Query        = "https://dns.adguard-dns.com/dns-query"
+		}
+		# https://www.cisco.com/c/en/us/support/docs/security/umbrella/224705-configure-dns-over-https-doh-with.html
+		"OpenDNS"
+		{
+			$PrimaryDNS   = "208.67.222.222"
+			$SecondaryDNS = "208.67.220.220"
+			$Query        = "https://doh.umbrella.com/dns-query"
 		}
 	}
 

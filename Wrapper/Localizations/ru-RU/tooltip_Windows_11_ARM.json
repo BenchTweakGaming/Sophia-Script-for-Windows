@@ -221,7 +221,7 @@
     "Arg": {
       "Zero": {
         "Tag": "Disable",
-        "ToolTip": "Не разрешать корпорации Майкрософт использовать диагностические данные персонализированных советов, рекламы и рекомендаций."
+        "ToolTip": "Не разрешать корпорации Майкрософт использовать диагностические данные для персонализированных советов, рекламы и рекомендаций."
       },
       "One": {
         "Tag": "Enable",
@@ -810,7 +810,7 @@
     }
   },
   {
-    "Region": "Start menu",
+    "Region": "UI & Personalization",
     "Function": "StartLayout",
     "Arg": {
       "Zero": {
@@ -973,7 +973,7 @@
       },
       "One": {
         "Tag": "Install",
-        "ToolTip": "Установить дополнительные компоненты, используя всплывающее диалоговое окно."
+        "ToolTip": "Установить дополнительные компоненты, используя всплывающее диалоговое окно (значение по умолчанию)."
       }
     }
   },
@@ -1342,7 +1342,7 @@
   {
     "Region": "System",
     "Function": "Install-DotNetRuntimes -Runtimes",
-    "ToolTip": "Установить последнюю версию .NET Desktop Runtime 8, 9, 10 x64.",
+    "ToolTip": "Установить последнюю версию .NET Desktop Runtime 8, 9, 10 (ARM64). Требуется соединение с интернетом.",
     "Arg": {
       "Zero": {
         "Tag": "NET8",
@@ -1377,7 +1377,7 @@
     "Function": "PreventEdgeShortcutCreation",
     "Arg": {
       "Zero": {
-        "Tag": "Channels",
+        "Tag": "Channels Stable, Beta, Dev, Canary",
         "ToolTip": "Перечислите каналы Microsoft Edge для предотвращения создания ярлыков на рабочем столе после его обновления."
       },
       "One": {
@@ -1392,11 +1392,11 @@
     "Arg": {
       "Zero": {
         "Tag": "Enable",
-        "ToolTip": "Создавать копии реестра при перезагрузки ПК и создавать задание RegIdleBackup в Планировщике задания для управления последующими резервными копиями."
+        "ToolTip": "Создавать копии реестра при перезагрузке ПК и создавать задание RegIdleBackup в Планировщике задания для управления последующими резервными копиями."
       },
       "One": {
         "Tag": "Disable",
-        "ToolTip": "Не создавать копии реестра при перезагрузки ПК (значение по умолчанию)."
+        "ToolTip": "Не создавать копии реестра при перезагрузке ПК (значение по умолчанию)."
       }
     }
   },
@@ -1660,25 +1660,29 @@
     "Arg": {
       "Zero": {
         "Tag": "Cloudflare",
-        "ToolTip": "Установить Cloudflare DNS, используя DNS-over-HTTPS."
+        "ToolTip": "Установить DNS от Cloudflare, используя DNS-over-HTTPS."
       },
       "One": {
         "Tag": "Google",
-        "ToolTip": "Установить Google Public DNS, используя DNS-over-HTTPS."
+        "ToolTip": "Установить DNS от Google Public DNS, используя DNS-over-HTTPS."
       },
       "Two": {
         "Tag": "Quad9",
-        "ToolTip": "Установить Quad9 DNS, используя DNS-over-HTTPS."
+        "ToolTip": "Установить DNS от Quad9, используя DNS-over-HTTPS."
       },
       "Three": {
         "Tag": "ComssOne",
-        "ToolTip": "Установить ComssOne DNS, используя DNS-over-HTTPS."
+        "ToolTip": "Установить DNS от ComssOne, используя DNS-over-HTTPS."
       },
       "Four": {
         "Tag": "AdGuard",
-        "ToolTip": "Установить AdGuard DNS, используя DNS-over-HTTPS."
+        "ToolTip": "Установить DNS от AdGuard, используя DNS-over-HTTPS."
       },
       "Five": {
+        "Tag": "OpenDNS",
+        "ToolTip": "Установить DNS от OpenDNS, используя DNS-over-HTTPS."
+      },
+      "Six": {
         "Tag": "Disable",
         "ToolTip": "Установить DNS-записи вашего провайдера (значение по умолчанию)."
       }
@@ -1833,8 +1837,8 @@
         "ToolTip": "Отобразить пункт \"Открыть в Терминале Windows\" в контекстном меню папок (значение по умолчанию)."
       },
       "One": {
-        "Tag": "Show",
-        "ToolTip": "Show the \"Open in Windows Terminal\" item in the folders context menu (default value)."
+        "Tag": "Hide",
+        "ToolTip": "Hide the \"Open in Windows Terminal\" item in the folders context menu."
       }
     }
   },

@@ -829,7 +829,7 @@
     }
   },
   {
-    "Region": "Start menu",
+    "Region": "UI & Personalization",
     "Function": "StartLayout",
     "Arg": {
       "Zero": {
@@ -1361,7 +1361,7 @@
   {
     "Region": "System",
     "Function": "Install-DotNetRuntimes -Runtimes",
-    "ToolTip": "Installieren Sie die neueste .NET Desktop Runtime 8, 9, 10 x64.",
+    "ToolTip": "Installieren Sie die neueste .NET Desktop Runtime 8, 9, 10 x64. Internetverbindung erforderlich.",
     "Arg": {
       "Zero": {
         "Tag": "NET8",
@@ -1679,25 +1679,29 @@
     "Arg": {
       "Zero": {
         "Tag": "Cloudflare",
-        "ToolTip": "Aktivieren Sie DNS-over-HTTPS mit Cloudflare DNS."
+        "ToolTip": "Richten Sie DNS von Cloudflare mithilfe von DNS-over-HTTPS ein."
       },
       "One": {
         "Tag": "Google",
-        "ToolTip": "Aktivieren Sie DNS-over-HTTPS mit Google DNS."
+        "ToolTip": "Richten Sie DNS von Google Public DNS mithilfe von DNS-over-HTTPS ein."
       },
       "Two": {
         "Tag": "Quad9",
-        "ToolTip": "Aktivieren Sie DNS-over-HTTPS mit Quad9 DNS."
+        "ToolTip": "Richten Sie DNS von Quad9 mithilfe von DNS-over-HTTPS ein."
       },
       "Three": {
         "Tag": "ComssOne",
-        "ToolTip": "Aktivieren Sie DNS-over-HTTPS mit ComssOne DNS."
+        "ToolTip": "Richten Sie DNS von ComssOne mithilfe von DNS-over-HTTPS ein."
       },
       "Four": {
         "Tag": "AdGuard",
-        "ToolTip": "Aktivieren Sie DNS-over-HTTPS mit AdGuard DNS."
+        "ToolTip": "Richten Sie DNS von AdGuard mithilfe von DNS-over-HTTPS ein."
       },
       "Five": {
+        "Tag": "OpenDNS",
+        "ToolTip": "Richten Sie DNS von OpenDNS mithilfe von DNS-over-HTTPS ein."
+      },
+      "Six": {
         "Tag": "Disable",
         "ToolTip": "Standard-DNS-Einträge des Internetdienstanbieters festlegen (Standardwert)."
       }
