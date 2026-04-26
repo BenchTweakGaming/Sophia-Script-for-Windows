@@ -3,7 +3,6 @@
 
 # Get access token
 # https://www.deviantart.com/developers/authentication
-
 $Body = @{
 	grant_type    = "client_credentials"
 	client_id     = $env:DEVIANTART_CLIENT_ID
